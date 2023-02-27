@@ -2,25 +2,28 @@
 
 git config --global user.email "Shankarsharma@gmail.com"
 git config --global user.name "Shankar Sharma"
-len=$(yq "length" manifest.yml)
-path="/home/runner/work/"
-echo $path
+len=$(yq "length" /actions/manifest.yml)
+#path="/home/runner/work/"
+#echo $path
 echo $len
+ls 
+pwd
 for ((i=0; i<${len}; i++))
 do
   echo "For test"
-  cd "$3"/.github/runfiles
+  #cd "$3"/.github/runfiles
   #Collecting Values from Yaml file
-  repo=$(yq ".[$i].Repository" manifest.yml)
-  name=$(yq ".[$i].Name" manifest.yml)
-  branch=$(yq ".[$i].Branch" manifest.yml)
-  Sync_dir=$(yq ".[$i].Sync_dir" manifest.yml)
+  repo=$(yq ".[$i].Repository" /actions/manifest.yml)
+  name=$(yq ".[$i].Name" /actions/manifest.yml)
+  branch=$(yq ".[$i].Branch" /actions/manifest.yml)
+  Sync_dir=$(yq ".[$i].Sync_dir" /actions/manifest.yml)
  # echo "$repo"
-  cd "$path"
- # pwd
- # ls
+ # cd "$path"
+  pwd
+  ls
+  
   git clone -b $branch https://Shankarsharm:"$1"@"$repo"
- # ls 
+  ls 
   cd $name
   rm -rf $2
  # ls
@@ -41,7 +44,7 @@ do
    # pwd
      rm -f .lfsconfig .gitignore .gitattributes
    # ls
-    cp -r `ls -A | grep -v ".git"` "$path"/"$name"/"$2"/
+    cp -r `ls -A | grep -v ".git"` /actions/"$name"/"$2"/
     echo $?
     cd "$path"/"$name"/
     git add .
@@ -56,7 +59,7 @@ do
       echo "$file"
       cd "$3"
      # pwd
-      cp -R "$file" "$path"/"$name"/"$2"/
+      cp -R "$file" /actions/"$name"/"$2"/
       echo $?
      # ls
      # pwd
@@ -68,7 +71,7 @@ do
      # ls
       echo "Copied specific Directories"
     done
-    cd "$path"/"$name"/
+    cd /actions/"$path"/"$name"/
      # ls 
      # pwd
     git add .
