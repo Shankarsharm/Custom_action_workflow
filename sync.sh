@@ -2,8 +2,9 @@
 
 git config --global user.email "Shankarsharma@gmail.com"
 git config --global user.name "Shankar Sharma"
+cd /actions/
 len=$(yq "length" /actions/manifest.yml)
-path="/__w/FNV4_SWC_Test/FNV4_SWC_Test"
+path="/github/workspace/"
 echo $path
 echo $len
 ls 
@@ -11,7 +12,7 @@ pwd
 for ((i=0; i<${len}; i++))
 do
   echo "For test"
-  #cd "$3"/.github/runfiles
+  cd /actions/
   #Collecting Values from Yaml file
   repo=$(yq ".[$i].Repository" /actions/manifest.yml)
   name=$(yq ".[$i].Name" /actions/manifest.yml)
