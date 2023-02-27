@@ -3,8 +3,8 @@
 git config --global user.email "Shankarsharma@gmail.com"
 git config --global user.name "Shankar Sharma"
 len=$(yq "length" /actions/manifest.yml)
-#path="/home/runner/work/"
-#echo $path
+path="/__w/FNV4_SWC_Test/FNV4_SWC_Test"
+echo $path
 echo $len
 ls 
 pwd
@@ -39,7 +39,7 @@ do
   if [[ $a == "all" ]]
   then
     echo "yes copy everything"
-    cd "$3"
+    cd "$path"
    # ls 
    # pwd
      rm -f .lfsconfig .gitignore .gitattributes
@@ -57,7 +57,7 @@ do
     do
       file=$(echo $Sync_dir | cut -d "," -f"$j")
       echo "$file"
-      cd "$3"
+      cd "$path"
      # pwd
       cp -R "$file" /actions/"$name"/"$2"/
       echo $?
