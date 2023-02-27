@@ -9,6 +9,7 @@ len=$(yq "length" /actions/manifest.yml)
 #path="/github/workspace/"
 #echo $path
 echo $len
+git clone -b Jenkins https://Shankarsharm:"$1"@github.com/Shankarsharm/FNV4_SWC_Test.git
 ls 
 pwd
 for ((i=0; i<${len}; i++))
