@@ -3,9 +3,11 @@
 git config --global user.email "Shankarsharma@gmail.com"
 git config --global user.name "Shankar Sharma"
 cd /actions/
+ls
+pwd
 len=$(yq "length" /actions/manifest.yml)
-path="/github/workspace/"
-echo $path
+#path="/github/workspace/"
+#echo $path
 echo $len
 ls 
 pwd
@@ -82,14 +84,3 @@ do
     echo "Push Successful!!"
   fi
 done
-cd $3
-ls -a
-pwd
-commit_id=$(git log | head -n 1 | cut -d " " -f2)
-echo commit_id
-cd $3/.github/runfiles/
-sed -i '/lastbuild:/c \ \ lastbuild: '$commit_id'' manifest.yml
-git add manifest.yml
-git commit -m "updated manifest file"
-git push https://Shankarsharm:"$1"@github.com/Shankarsharm/FNV4_SWC_Test.git
-
