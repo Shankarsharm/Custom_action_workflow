@@ -7,9 +7,6 @@ inputs:
   repo_name:
     description: 'Repository name'
     required: true
-  path:
-    description: 'Workspace path'
-    required: true
 outputs:
   message:
     description: "This is the output"
@@ -19,4 +16,3 @@ runs:
   args:
     - ${{ inputs.key }}
     - ${{ inputs.repo_name }}
-    - ${{ inputs.path }}
